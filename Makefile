@@ -1,14 +1,16 @@
 PY?=python3
-PELICAN?=pelican
 PELICANOPTS=
 
-BASEDIR=$(CURDIR)
+BASEDIR=/website
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
+HOSTOUTPUTDIR=$(CURDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
 GITHUB_PAGES_BRANCH=gh-pages
+
+PELICAN?=/usr/bin/sudo docker run --rm -it -p 8000:8000 -v $(CURDIR):/website pelican pelican
 
 
 DEBUG ?= 0
@@ -35,6 +37,7 @@ help:
 	@echo '   make ssh_upload                     upload the web site via SSH        '
 	@echo '   make rsync_upload                   upload the web site via rsync+ssh  '
 	@echo '   make github                         upload the web site via gh-pages   '
+	@echo '   make docker-image                   build docker image for pelican     '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -75,8 +78,10 @@ publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 github: publish
-	ghp-import -c alexgose.com -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+	ghp-import -c alexgose.com -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(HOSTOUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
+docker-image: 
+	/usr/bin/sudo docker build -t pelican .
 
-.PHONY: html help clean regenerate serve serve-global devserver publish github
+.PHONY: html help clean regenerate serve serve-global devserver publish github docker-image

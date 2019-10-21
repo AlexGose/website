@@ -10,7 +10,7 @@ PUBLISHCONF=$(BASEDIR)/publishconf.py
 
 GITHUB_PAGES_BRANCH=gh-pages
 
-PELICAN?=/usr/bin/sudo docker run --rm -it -p 8000:8000 -v $(CURDIR):/website pelican pelican
+PELICAN?=/usr/bin/sudo docker run --rm -it -p 8000:8000 -v $(CURDIR)/content:/website/content:ro -v $(CURDIR)/output:/website/output pelican pelican
 
 
 DEBUG ?= 0

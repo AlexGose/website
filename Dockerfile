@@ -2,8 +2,6 @@
 FROM ubuntu:16.04
 RUN mkdir /website
 ADD requirements.txt /website/
-ADD pelicanconf.py /website/
-ADD publishconf.py /website/
 WORKDIR /website
 RUN apt-get update && apt-get install -y python-pip git
 RUN pip install -r requirements.txt
@@ -25,3 +23,9 @@ RUN mkdir /website/plugins \
 && git config core.sparseCheckout true \
 && echo "/i18n_subsites/" >> .git/info/sparse-checkout \
 && git pull origin master
+
+# bust the cache
+WORKDIR /website 
+ADD pelicanconf.py /website/ 
+ADD publishconf.py /website/
+ADD Makefile /website/ 

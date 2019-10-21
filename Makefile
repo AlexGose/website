@@ -4,13 +4,12 @@ PELICANOPTS=
 BASEDIR=/website
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
-HOSTOUTPUTDIR=$(CURDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
 GITHUB_PAGES_BRANCH=gh-pages
 
-PELICAN?=/usr/bin/sudo docker run --rm -it -p 8000:8000 -v $(CURDIR)/content:/website/content:ro -v $(CURDIR)/output:/website/output pelican pelican
+PELICAN?=pelican
 
 
 DEBUG ?= 0
@@ -37,7 +36,6 @@ help:
 	@echo '   make ssh_upload                     upload the web site via SSH        '
 	@echo '   make rsync_upload                   upload the web site via rsync+ssh  '
 	@echo '   make github                         upload the web site via gh-pages   '
-	@echo '   make docker-image                   build docker image for pelican     '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -77,11 +75,12 @@ endif
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
-github: publish
-	ghp-import -c alexgose.com -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(HOSTOUTPUTDIR)
+.git: 
+	git init
+	git remote add origin -f https://github.com/alexgose/website
+
+github: publish | .git
+	ghp-import -c alexgose.com -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
-docker-image: 
-	/usr/bin/sudo docker build -t pelican .
-
-.PHONY: html help clean regenerate serve serve-global devserver publish github docker-image
+.PHONY: html help clean regenerate serve serve-global devserver publish github

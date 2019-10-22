@@ -8,6 +8,11 @@ CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
 GITHUB_PAGES_BRANCH=gh-pages
+GITHUB_REPO=https://github.com/alexgose/website
+
+GHP_IMPORTOPTS=-c alexgose.com
+GHP_IMPORTOPTS+=-m "Generate Pelican site" 
+GHP_IMPORTOPTS+=-b $(GITHUB_PAGES_BRANCH) 
 
 PELICAN?=pelican
 
@@ -77,10 +82,10 @@ publish:
 
 .git: 
 	git init
-	git remote add origin -f https://github.com/alexgose/website
+	git remote add origin -f $(GITHUB_REPO)
 
 github: publish | .git
-	ghp-import -c alexgose.com -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+	ghp-import $(GHP_IMPORTOPTS) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 .PHONY: html help clean regenerate serve serve-global devserver publish github

@@ -25,7 +25,7 @@ RUN mkdir /website/plugins \
 && git pull origin master
 
 # bust the cache
-WORKDIR /website 
+WORKDIR /website
 ADD pelicanconf.py /website/ 
 ADD publishconf.py /website/
 ADD Makefile /website/ 

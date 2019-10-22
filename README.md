@@ -46,7 +46,7 @@ $ docker run --rm -it -p 8000:8000 \
     -v $(pwd)/output:/website/output pelican make devserver
 ```
 
-You can see the website (locally) by opening a browser and visiting [http://127.0.0.1:8000](127.0.0.1:8000).  The note above about replacing `$(pwd)` with the path to the current working directory applies here as well.  On Linux you can shut down the local server by pressing "Ctrl+C" in the command window.
+You can see the website (locally) by opening a browser and visiting [http://127.0.0.1:8000](http://127.0.0.1:8000).  The note above about replacing `$(pwd)` with the path to the current working directory applies here as well.  On Linux you can shut down the local server by pressing "Ctrl+C" in the command window.
 
 ### Publishing to Github Pages
 
@@ -88,7 +88,7 @@ Alexander H Gose
 
 ## License
 
-The contents of the "content" directory and this "README.md" file are released under the [CC BY-SA 4.0](LICENSE-CC) Creative Commons license.  The [Makefile](Makefile), [pelicanconfig.py](pelicanconfig.py), and [publishconfig.py](publishconfig.py) files are modified files from the Pelican project and are therefore covered under the [AGPL](https://github.com/getpelican/pelican/blob/master/LICENSE) license.  All other files, including the [Dockerfile](Dockerfile), are released under the [MIT](LICENSE-MIT) license.
+The contents of the [content](content) directory are released under the [CC BY-SA 4.0](LICENSE-CC) Creative Commons license.  The [Makefile](Makefile), [pelicanconfig.py](pelicanconfig.py), and [publishconfig.py](publishconfig.py) files are modified files from the Pelican project and are therefore covered under the [AGPL](https://github.com/getpelican/pelican/blob/master/LICENSE) license.  All other files, including the [Dockerfile](Dockerfile) and this [README.md](README.md) file, are released under the [MIT](LICENSE-MIT) license.
 
 ## Acknowledgements
 

@@ -1,7 +1,7 @@
 # a container for pelican
 FROM ubuntu:16.04
 RUN mkdir /website
-ADD requirements.txt /website/
+COPY requirements.txt /website/
 WORKDIR /website
 RUN apt-get update && apt-get install -y \
 	git \
@@ -30,6 +30,6 @@ RUN mkdir /website/plugins \
 
 # bust the cache
 WORKDIR /website
-ADD pelicanconf.py /website/ 
-ADD publishconf.py /website/
-ADD Makefile /website/ 
+COPY pelicanconf.py /website/ 
+COPY publishconf.py /website/
+COPY Makefile /website/ 

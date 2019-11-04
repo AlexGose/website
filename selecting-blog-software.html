@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Starting a blog? Consider Pelican, Docker, and Github Pages - Alex Gose</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://alexgose.github.io/website/selecting-blog-software.html">
+
+        <meta name="author" content="Alex Gose" />
+        <meta name="keywords" content="Pelican,Python,Docker,Github-Pages" />
+        <meta name="description" content="Why you might want to use a Docker container running Pelican to publish your website on Github Pages if you are starting a blog." />
+
+        <meta property="og:site_name" content="Alex Gose" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Starting a blog? Consider Pelican, Docker, and Github Pages"/>
+        <meta property="og:url" content="https://alexgose.github.io/website/selecting-blog-software.html"/>
+        <meta property="og:description" content="Why you might want to use a Docker container running Pelican to publish your website on Github Pages if you are starting a blog."/>
+        <meta property="article:published_time" content="2019-11-04" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="Pelican" />
+            <meta property="article:tag" content="Python" />
+            <meta property="article:tag" content="Docker" />
+            <meta property="article:tag" content="Github-Pages" />
+            <meta property="article:author" content="Alex Gose" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://alexgose.github.io/website/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="https://alexgose.github.io/website/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://alexgose.github.io/website/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://alexgose.github.io/website/theme/css/style.css" type="text/css"/>
+
+        <link href="https://alexgose.github.io/website/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Alex Gose ATOM Feed"/>
+
+        <link href="https://alexgose.github.io/website/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Alex Gose blog ATOM Feed"/>
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://alexgose.github.io/website/" class="navbar-brand">
+Alex Gose            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="https://alexgose.github.io/website/pages/about.html">
+                             About Me
+                          </a></li>
+                        <li class="active">
+                            <a href="https://alexgose.github.io/website/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://alexgose.github.io/website/selecting-blog-software.html"
+                       rel="bookmark"
+                       title="Permalink to Starting a blog? Consider Pelican, Docker, and Github Pages">
+                        Starting a blog?  Consider Pelican, Docker, and Github Pages
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2019-11-04T00:00:00+00:00"> Mon 04 November 2019</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://alexgose.github.io/website/tag/pelican.html">Pelican</a>
+        /
+	<a href="https://alexgose.github.io/website/tag/python.html">Python</a>
+        /
+	<a href="https://alexgose.github.io/website/tag/docker.html">Docker</a>
+        /
+	<a href="https://alexgose.github.io/website/tag/github-pages.html">Github-Pages</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2>Who should read this?</h2>
+<p>You want to start a blog, and you are no stranger to the command line or Linux operating system.  You do not expect to have a lot of traffic initially, but you are willing to make changes to your website over time.  You are not interested in making money off of your website at this time.  You view this project as an opportunity to learn more about aspects of web development that interest you.  </p>
+<p>If this sounds like you, then read on.  In this post, I'll discuss why you might want to use <a href="https://blog.getpelican.com">Pelican</a> running in a <a href="https://www.docker.com">Docker</a> container to publish your blog on <a href="https://pages.github.com/">Github Pages</a>.  In a future post, I'll show you how to set up your own blog with these programs.</p>
+<h2>Static Site Generators vs. WordPress</h2>
+<p>Most websites recommend a <a href="https://en.wikipedia.org/wiki/Content_management_system">Content Management System</a> (CMS) for blogging, with <a href="https://wordpress.org">WordPress</a> being the most popular suggestion.  Other options include <a href="https://www.joomla.org">Joomla</a> and <a href="https://www.drupal.org">Drupal</a>.  </p>
+<p>I have no experience using WordPress, but I think it is probably the best choice for most people getting started.  It doesn't require much, if any, knowledge of web development or programming, but knowing more will give you more options for your website.  Because WordPress is so popular, there are many resources and hosting options available.</p>
+<p>WordPress is powerful and easy to use but does have some drawbacks.  The power comes from the ability to run programs on the web server.  This gives WordPress more capabilities than a <a href="https://en.wikipedia.org/wiki/Static_web_page">static website</a>, where a server simply sends files to website visitors.  This extra power requires more computing resources and administrative skill to ensure the smooth and safe operation of your website.  If you don't have these skills, then usually you end up paying someone who does.  This is often in the form of monthly fees paid to your hosting company.  </p>
+<p>Static websites, like this one at the time this is being written, are a simpler option.  The relative ease of administering a static website often translates into a lower cost of hosting.  There are even a number of free options, which will be discussed below.  If you choose to be the administrator for the server of your site, then you will tend to have fewer operational and security concerns with a static website.  For this reason, a static blog is often an excellent first step towards building a more complex website. </p>
+<h2>Pelican</h2>
+<p><a href="https://blog.getpelican.com">Pelican</a> is an open source static site generating software program written in python.  Other static site generating programs include <a href="https://gohugo.io">Hugo</a> and <a href="https://jekyllrb.com/">Jekyll</a>.  </p>
+<p>I don't have experience with other static site generating programs.  I mainly chose Pelican because it is written in python.  Since I know python, I can more easily view and modify the source code at some point in the future if I want.  Since Pelican is much simpler than a CMS program like WordPress, inspecting the source code should be easier too. </p>
+<p>I was also attracted to Pelican for its selection of <a href="https://docs.getpelican.com/en/stable/plugins.html">plugins</a> and <a href="https://github.com/getpelican/pelican-themes">themes</a>, as well as the size of the development community.  I may experiment in the future and try other static site generating programs.</p>
+<h2>Hosting</h2>
+<p>I am currently using Github Pages for this website.  Github Pages allows you to use a custom domain, which can be purchased for a nominal yearly fee.  Although this hosting service is free, there are some <a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages#guidelines-for-using-github-pages">restrictions</a>, which you should be aware of before using this service.  </p>
+<p>Another free hosting option is <a href="https://about.gitlab.com/product/pages/">Gitlab Pages</a>, but I don't have experience with it.  If you decide to use a paid host, then a static website is usually easier or cheaper to run.  I may experiment with other hosting services in the future.</p>
+<h2>Docker vs. Virtual Environments</h2>
+<p>With any static site generator, like Pelican, the content of your website is stored in a simple format, such as <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> files.  The static site generator converts your content into fully formatted html files, which can be read and displayed by a browser.  These html files are sent from the web server to people visiting your website.</p>
+<p>Like most python programs, Pelican can be installed in a virtual environment on your machine, such as your laptop computer.  This helps to isolate the program, which makes it easier to control dependencies and upgrades of the software.  However, it is still possible for two machines to have different virtual environments for the same project, and the process for setting up the environments on these machines can also be different. </p>
+<p>This can cause difficulties if more than one machine is used to build a website and the machines use different operating systems, or even different versions of the same operating system.  The complexity of maintaining environments on separate machines becomes more complex over time as software is upgraded.  Docker containers offer a solution to this problem by maintaining a consistent deployment of software across machines. </p>
+<p>Docker containers also provide a measure of isolation from other programs running on a single machine.  With Docker you can limit the risk of other programs modifying the directories or dependent libraries used by Pelican.  As you can see with the <a href="https://github.com/AlexGose/website/blob/master/Dockerfile">docker file</a> used for this website, you can often maintain a relatively small amount of source code to build your website with Docker, avoiding the need to store files for plugins and themes directly on your machine.</p>
+<h2>Conclusions</h2>
+<p>In conclusion, there are many software and hosting options available for people getting started with building a blog website.  By seeing the options chosen for this website, and how they compare to some other popular options, I hope you will be in a better position to decide for yourself.  Keep in mind that there aren't really any bad choices.  Once you start, you can always make modifications or change the software, hosting, or content later.  Just be sure to backup your work.  If you don't mind the extra time and effort required, you might try more than one option now and pick the best later.  </p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://linkedin.com/in/alexgose"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://github.com/alexgose"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+</li>
+<!-- End Sidebar/Github -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2019 Alex Gose
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://alexgose.github.io/website/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://alexgose.github.io/website/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://alexgose.github.io/website/theme/js/respond.min.js"></script>
+
+
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'https://alexgose.github.io/website/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'AlexGose',
+    count: 5,
+    skip_forks: false,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="https://alexgose.github.io/website/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-149099290-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>

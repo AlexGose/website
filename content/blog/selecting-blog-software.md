@@ -4,6 +4,10 @@ Tags: Pelican, Python, Docker, Github-Pages
 Slug: selecting-blog-software
 Summary: Why you might want to use a Docker container running Pelican to publish your website on Github Pages if you are starting a blog.
 
+![container-bird.jpg]({static}/images/container-bird-small.jpg)
+
+Birds flying near a container ship ([source](https://pixabay.com/photos/container-freighter-seafaring-elbe-1612960/))
+
 ## Who should read this?
 
 You want to start a blog, and you are no stranger to the command line or Linux operating system.  You do not expect to have a lot of traffic initially, but you are willing to make changes to your website over time.  You are not interested in making money off of your website at this time.  You view this project as an opportunity to learn more about aspects of web development that interest you.  
@@ -46,4 +50,6 @@ Docker containers also provide a measure of isolation from other programs runnin
 
 ## Conclusions  
 
-In conclusion, there are many software and hosting options available for people getting started with building a blog website.  By seeing the options chosen for this website, and how they compare to some other popular options, I hope you will be in a better position to decide for yourself.  Keep in mind that there aren't really any bad choices.  Once you start, you can always make modifications or change the software, hosting, or content later.  Just be sure to backup your work.  If you don't mind the extra time and effort required, you might try more than one option now and pick the best later.  
+In conclusion, there are many software and hosting options available for building a blog website.  By seeing the options chosen for this website, and how they compare to some other popular options, I hope you will be in a better position to decide for yourself.  
+
+Keep in mind that there aren't really any bad choices.  Once you start, you can always make modifications or change the software, hosting, or content later.  Just be sure to backup your work.  If you don't mind the extra time and effort, you might try more than one option. 

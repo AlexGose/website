@@ -28,8 +28,8 @@ RUN mkdir /website/plugins \
 && echo "/i18n_subsites/" >> .git/info/sparse-checkout \
 && git pull origin master
 
-# bust the cache
-WORKDIR /website
+# bust the cache 
+WORKDIR /website 
 COPY pelicanconf.py /website/ 
 COPY publishconf.py /website/
 COPY Makefile /website/ 

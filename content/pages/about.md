@@ -1,7 +1,7 @@
 Title: About Me 
 Slug: about
 
-![my picture]({static}my_photo192x240.jpg)
+![my picture]({static}/images/my_photo192x240.jpg)
 
 I am an independent researcher with a passion for learning who is currently transitioning to a career as an operations research and data scientist.  I'm seeking to apply my skills to provide objective insights into optimal business operations.
 

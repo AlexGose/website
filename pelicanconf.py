@@ -42,7 +42,6 @@ JINJA_ENVIRONMENT = {
 
 USE_FOLDER_AS_CATEGORY = True
 
-# Additional pelican-boostrap3 options:
 CC_LICENSE = "CC-BY-SA"
 GITHUB_USER = "AlexGose"
 DISPLAY_ARTICLE_INFO_ON_INDEX = True

@@ -47,40 +47,7 @@ $ docker run --rm -it -p 8000:8000 \
 ```
 
 You can see the website (locally) by opening a browser and visiting [http://127.0.0.1:8000](http://127.0.0.1:8000).  The note above about replacing `$(pwd)` with the path to the current working directory applies here as well.  On Linux you can shut down the local server by pressing "Ctrl+C" in the command window.
-
-### Publishing to Github Pages
-
-If you followed all the instructions above, then you can copy the files in this repository into your own Github repository.  Download those files into a new directory on your machine.   Next, you will need to modify [Makefile](Makefile), [pelicanconfig.py](pelicanconfig.py), and [publishconfig.py](publishconfig.py) appropriately for your website.  Alternatively, you can create these three files by going to a new empty directory on your machine and using the following command:
-
-```
-$ docker run -it -v $(pwd)/config:/website/config pelican 
-```
-
-You should see a new command prompt similar to the following:
-
-```
-root@7dda5392b12f:/website#
-```
-
-At this command prompt enter `cd config`.  Next, enter `pelican-quickstart`.  This will take you through a series of questions that will be used to generate the files, along with other files that you won't need.  Be sure to answer yes to the question "Do you want to upload your website using GitHub Pages?"  Finally, enter `exit` at the command prompt when you are done to exit the running Docker container.  
-
-This will create a new directory "config" on your machine with the three files inside.  You can use these files to replace the three files in the directory where you build your website; however, you will most likely need to modify the Makefile further.  In particular, compare the "github" target in the Makefile in this repository to the one you created.  You can delete the "config" folder when you are done.
-
-Assuming you are in the directory where you plan to build your website, create a new docker image named "pelican-build": 
-
-```
-$ docker build -t pelican-build .
-```
-
-This image contains the configuration files for your website.  Finally, publish your website on github pages using the following command:
-
-```
-$ docker run --rm -it -p 8000:8000 \
-    -v $(pwd)/content:/website/content:ro \
-    -v $(pwd)/output:/website/output pelican-build make github 
-```
-
-You will need to enter your username and password for your github account. This will add the output html files to the "gh-pages" branch of your github repository.  
+ 
 
 ## Authors
 

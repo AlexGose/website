@@ -10,9 +10,9 @@ Birds flying near a container ship ([source](https://pixabay.com/photos/containe
 
 ## Who should read this?
 
-You want to start a blog, and you are no stranger to the command line or Linux operating system.  You do not expect to have a lot of traffic initially, but you are willing to make changes to your website over time.  You are not interested in making money off of your website at this time.  You view this project as an opportunity to learn more about aspects of web development that interest you.  
+You want to start a blog, and you are no stranger to the command line or Linux operating system.  You do not expect to have a lot of traffic initially, but you are willing to make changes to accommodate future needs.  You are not interested in making money off of your website at this time.  You view this project as an opportunity to learn more about aspects of web development that interest you.  
 
-If this sounds like you, then read on.  In this post, I'll discuss why you might want to use [Pelican](https://blog.getpelican.com) running in a [Docker](https://www.docker.com) container to publish your blog on [Github Pages](https://pages.github.com/).  In a future post, I'll show you how to set up your own blog with these programs.
+If this sounds like you, then read on.  In this post, I'll discuss why you might want to use [Pelican](https://blog.getpelican.com) running in a [Docker](https://www.docker.com) container to publish your blog on [Github Pages](https://pages.github.com/).  In the [next post](https://alexgose.com/build-blog-pelican-docker.html), I'll show you how to set up your own blog with these programs.
 
 ## Static Site Generators vs. WordPress
 

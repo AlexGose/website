@@ -10,7 +10,7 @@ Birds flying near a container ship ([source](https://pixabay.com/photos/containe
 
 ## Introduction
 
-The [last blog post](https://alexgose.com/selecting-blog-software.html) explained why you might want to use a Docker container running Pelican to publish your website if you are starting a blog.  This post will provide detailed instructions.  
+The [last blog post](https://alexgose.com/selecting-blog-software.html) explained why you might want to use a [Docker](https://docker.com) container running [Pelican](https://blog.getpelican.com/) to publish your website if you are starting a blog.  This post will provide detailed instructions.  
 
 Although these instructions are for Ubuntu Linux (Xenial 16.04), the procedure for other operating systems should be similar.  This should be good enough to get you started, but you will have to eventually modify the [Dockerfile](https://raw.githubusercontent.com/AlexGose/website/062beca904b94abcda254d824a57eec2e5eb236b/Dockerfile) if you want to change the theme or include more plugins.  Familiarity with git and the command line are assumed.
 
@@ -64,10 +64,10 @@ $ curl -O https://raw.githubusercontent.com/AlexGose/website/062beca904b94abcda2
 $ curl -O https://raw.githubusercontent.com/AlexGose/website/f9e09b0cc56eec4a1840ccbb1c2270f468b5574c/requirements.txt
 ```
 
-You should see a file named `Dockerfile` in the current directory if you enter `ls` at the command line.  Open up the file in a text editor (e.g., by entering `nano Dockerfile` at the command line), and type a `#` in front of the last four lines to comment them out:
+You should see a file named `Dockerfile` in the current directory if you enter `ls` at the command line.  Open up the file in a text editor (e.g., by entering `nano Dockerfile` at the command line), and type a `#` in front of the last three lines to comment them out:
 
 ```docker
-#WORKDIR /website
+WORKDIR /website
 #COPY pelicanconf.py /website/
 #COPY publishconf.py /website/
 #COPY Makefile /website/
@@ -204,7 +204,7 @@ Be sure to read the [Pelican documentation](https://docs.getpelican.com/en/stabl
 
 ## Step 8: Build A Local Development Server
 
-Open up the `Dockerfile` in a text editor and remove the `#` from the beginning of the last four lines to uncomment them.  Save the changes and re-build the docker image:
+Open up the `Dockerfile` in a text editor and remove the `#` from the beginning of the last three lines to uncomment them.  Save the changes and re-build the docker image:
 
 ```bash
 sudo docker build -t pelican .

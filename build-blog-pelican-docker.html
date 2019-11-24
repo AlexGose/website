@@ -118,7 +118,7 @@ Alex Gose            </a>
                 <p><img alt="container-bird.jpg" src="https://alexgose.github.io/website/images/container-bird-small.jpg"></p>
 <p>Birds flying near a container ship (<a href="https://pixabay.com/photos/container-freighter-seafaring-elbe-1612960/">source</a>)</p>
 <h2>Introduction</h2>
-<p>The <a href="https://alexgose.com/selecting-blog-software.html">last blog post</a> explained why you might want to use a Docker container running Pelican to publish your website if you are starting a blog.  This post will provide detailed instructions.  </p>
+<p>The <a href="https://alexgose.com/selecting-blog-software.html">last blog post</a> explained why you might want to use a <a href="https://docker.com">Docker</a> container running <a href="https://blog.getpelican.com/">Pelican</a> to publish your website if you are starting a blog.  This post will provide detailed instructions.  </p>
 <p>Although these instructions are for Ubuntu Linux (Xenial 16.04), the procedure for other operating systems should be similar.  This should be good enough to get you started, but you will have to eventually modify the <a href="https://raw.githubusercontent.com/AlexGose/website/062beca904b94abcda254d824a57eec2e5eb236b/Dockerfile">Dockerfile</a> if you want to change the theme or include more plugins.  Familiarity with git and the command line are assumed.</p>
 <h2>Step 1: Install Docker</h2>
 <p>You will need to install the Community Edition of Docker if you haven't already.  The official <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">instructions</a> for Ubuntu are good.  See the <a href="https://docs.docker.com/install/">install</a> page for other operating systems.  Be sure to run the <code>hello-world</code> image to verify that docker was installed correctly by entering the command <code>sudo docker run hello-world</code> at the command line.</p>
@@ -155,8 +155,8 @@ $ curl -O https://raw.githubusercontent.com/AlexGose/website/f9e09b0cc56eec4a184
 </pre></div>
 
 
-<p>You should see a file named <code>Dockerfile</code> in the current directory if you enter <code>ls</code> at the command line.  Open up the file in a text editor (e.g., by entering <code>nano Dockerfile</code> at the command line), and type a <code>#</code> in front of the last four lines to comment them out:</p>
-<div class="highlight"><pre><span></span><span class="c">#WORKDIR /website</span>
+<p>You should see a file named <code>Dockerfile</code> in the current directory if you enter <code>ls</code> at the command line.  Open up the file in a text editor (e.g., by entering <code>nano Dockerfile</code> at the command line), and type a <code>#</code> in front of the last three lines to comment them out:</p>
+<div class="highlight"><pre><span></span><span class="k">WORKDIR</span><span class="s"> /website</span>
 <span class="c">#COPY pelicanconf.py /website/</span>
 <span class="c">#COPY publishconf.py /website/</span>
 <span class="c">#COPY Makefile /website/</span>
@@ -272,7 +272,7 @@ This is a test blog post.
 
 <p>Be sure to read the <a href="https://docs.getpelican.com/en/stable/content.html">Pelican documentation</a> for more information on writing content.</p>
 <h2>Step 8: Build A Local Development Server</h2>
-<p>Open up the <code>Dockerfile</code> in a text editor and remove the <code>#</code> from the beginning of the last four lines to uncomment them.  Save the changes and re-build the docker image:</p>
+<p>Open up the <code>Dockerfile</code> in a text editor and remove the <code>#</code> from the beginning of the last three lines to uncomment them.  Save the changes and re-build the docker image:</p>
 <div class="highlight"><pre><span></span>sudo docker build -t pelican .
 </pre></div>
 

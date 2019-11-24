@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Alex Gose</title><link href="https://alexgose.github.io/website/" rel="alternate"></link><link href="https://alexgose.github.io/website/feeds/all.atom.xml" rel="self"></link><id>https://alexgose.github.io/website/</id><updated>2019-11-23T00:00:00+00:00</updated><entry><title>Build a Blog using Pelican, Docker, and Github Pages</title><link href="https://alexgose.github.io/website/build-blog-pelican-docker.html" rel="alternate"></link><published>2019-11-23T00:00:00+00:00</published><updated>2019-11-23T00:00:00+00:00</updated><author><name>Alex Gose</name></author><id>tag:alexgose.github.io,2019-11-23:/website/build-blog-pelican-docker.html</id><summary type="html">&lt;p&gt;How to use a Docker container running Pelican to build a blog website hosted on Github Pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="container-bird.jpg" src="https://alexgose.github.io/website/images/container-bird-small.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Birds flying near a container ship (&lt;a href="https://pixabay.com/photos/container-freighter-seafaring-elbe-1612960/"&gt;source&lt;/a&gt;)&lt;/p&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="https://alexgose.com/selecting-blog-software.html"&gt;last blog post&lt;/a&gt; explained why you might want to use a Docker container running Pelican to publish your website if you are starting a blog.  This post will provide detailed instructions.  &lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://alexgose.com/selecting-blog-software.html"&gt;last blog post&lt;/a&gt; explained why you might want to use a &lt;a href="https://docker.com"&gt;Docker&lt;/a&gt; container running &lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; to publish your website if you are starting a blog.  This post will provide detailed instructions.  &lt;/p&gt;
 &lt;p&gt;Although these instructions are for Ubuntu Linux (Xenial 16.04), the procedure for other operating systems should be similar.  This should be good enough to get you started, but you will have to eventually modify the &lt;a href="https://raw.githubusercontent.com/AlexGose/website/062beca904b94abcda254d824a57eec2e5eb236b/Dockerfile"&gt;Dockerfile&lt;/a&gt; if you want to change the theme or include more plugins.  Familiarity with git and the command line are assumed.&lt;/p&gt;
 &lt;h2&gt;Step 1: Install Docker&lt;/h2&gt;
 &lt;p&gt;You will need to install the Community Edition of Docker if you haven't already.  The official &lt;a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/"&gt;instructions&lt;/a&gt; for Ubuntu are good.  See the &lt;a href="https://docs.docker.com/install/"&gt;install&lt;/a&gt; page for other operating systems.  Be sure to run the &lt;code&gt;hello-world&lt;/code&gt; image to verify that docker was installed correctly by entering the command &lt;code&gt;sudo docker run hello-world&lt;/code&gt; at the command line.&lt;/p&gt;
@@ -39,8 +39,8 @@ $ curl -O https://raw.githubusercontent.com/AlexGose/website/f9e09b0cc56eec4a184
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You should see a file named &lt;code&gt;Dockerfile&lt;/code&gt; in the current directory if you enter &lt;code&gt;ls&lt;/code&gt; at the command line.  Open up the file in a text editor (e.g., by entering &lt;code&gt;nano Dockerfile&lt;/code&gt; at the command line), and type a &lt;code&gt;#&lt;/code&gt; in front of the last four lines to comment them out:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;#WORKDIR /website&lt;/span&gt;
+&lt;p&gt;You should see a file named &lt;code&gt;Dockerfile&lt;/code&gt; in the current directory if you enter &lt;code&gt;ls&lt;/code&gt; at the command line.  Open up the file in a text editor (e.g., by entering &lt;code&gt;nano Dockerfile&lt;/code&gt; at the command line), and type a &lt;code&gt;#&lt;/code&gt; in front of the last three lines to comment them out:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;WORKDIR&lt;/span&gt;&lt;span class="s"&gt; /website&lt;/span&gt;
 &lt;span class="c"&gt;#COPY pelicanconf.py /website/&lt;/span&gt;
 &lt;span class="c"&gt;#COPY publishconf.py /website/&lt;/span&gt;
 &lt;span class="c"&gt;#COPY Makefile /website/&lt;/span&gt;
@@ -156,7 +156,7 @@ This is a test blog post.
 
 &lt;p&gt;Be sure to read the &lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican documentation&lt;/a&gt; for more information on writing content.&lt;/p&gt;
 &lt;h2&gt;Step 8: Build A Local Development Server&lt;/h2&gt;
-&lt;p&gt;Open up the &lt;code&gt;Dockerfile&lt;/code&gt; in a text editor and remove the &lt;code&gt;#&lt;/code&gt; from the beginning of the last four lines to uncomment them.  Save the changes and re-build the docker image:&lt;/p&gt;
+&lt;p&gt;Open up the &lt;code&gt;Dockerfile&lt;/code&gt; in a text editor and remove the &lt;code&gt;#&lt;/code&gt; from the beginning of the last three lines to uncomment them.  Save the changes and re-build the docker image:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo docker build -t pelican .
 &lt;/pre&gt;&lt;/div&gt;
 

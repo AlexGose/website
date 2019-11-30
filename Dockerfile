@@ -28,13 +28,14 @@ RUN mkdir /website/themes \
 && echo "/pelican-bootstrap3/" >> .git/info/sparse-checkout \
 && git pull origin master 
 
-# only download the i18n_subsites plugin
+# only download the required plugins
 RUN mkdir /website/plugins \
 && cd /website/plugins \
 && git init \
 && git remote add origin -f https://github.com/getpelican/pelican-plugins \
 && git config core.sparseCheckout true \
 && echo "/i18n_subsites/" >> .git/info/sparse-checkout \
+&& echo "/render_math/" >> .git/info/sparse-checkout \
 && git pull origin master
 
 # bust the cache 

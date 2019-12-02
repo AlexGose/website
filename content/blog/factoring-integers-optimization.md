@@ -1,7 +1,7 @@
 Date: 2019-12-2
 Title: A Model for Factoring Integers 
 Tags: General Audience, Integer Programming, Math, Math Models
-Summary: Using a familiar math problem from grade school, we'll show how to model, rather than solve, a much more difficult math problem.  You should be able to follow along with just a background in high school algebra. 
+Summary: Using a familiar math problem from grade school, we'll see how to model, rather than solve, a much more difficult math problem.  You should be able to follow along with just a background in high school algebra. 
 
 ## Introduction
 
